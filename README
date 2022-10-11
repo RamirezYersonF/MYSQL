@@ -1,0 +1,20 @@
+#Crear usuario
+CREATE USER 'nombre'@'localhost' IDENTIFIED BY 'contraseña';
+
+#Verificar usuarios
+SELECT user FROM mysql.user;
+
+#Mirar los permisos del usuario
+SHOW GRANTS FOR 'nombre'@'localhost' ;
+
+#Asingar permisos // En este caso solo le damos el accesos a una bd y todos los permisos en las tablas con el * 
+GRANT SELECT, INSERT , UPDATE, DELETE, CREATE, DROP ON  assistant.* TO 'nombre'@'localhost'; 
+                             
+#Revocar permisos para el usuario
+REVOKE tipodepermiso ON BD.nombredetabla FROM 'nombre'@'localhost';
+
+#Elimiar usuarios    
+DROP USER 'nombre'@'localhost';
+
+#cargar los privilegios
+FLUSH PRIVILEGES;
